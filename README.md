@@ -1,4 +1,4 @@
-# Me Guia.AI API
+# Aplicativo Me Guia.AI
 Aplicativo oficial do projeto Me Guia.AI desenvolvido por estudantes da EEEP Valter Nunes de Alencar para o festival científico FECSTEV
 
 ![Imagem do Projeto](https://i.imgur.com/7k04DAP.png)
