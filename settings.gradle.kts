@@ -12,5 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Me Guia.AI"
-include ':app'
+
+rootProject.name = "meguiaai"
+include(":app")
+ 

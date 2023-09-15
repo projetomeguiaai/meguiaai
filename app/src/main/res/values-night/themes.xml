@@ -1,8 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MeGuiaAI" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">#0589E4</item>
-        <item name="colorPrimaryDark">#0589E4</item>
-        <item name="colorAccent">#0589E4</item>
+    <style name="Base.Theme.Meguiaai" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
 </resources>

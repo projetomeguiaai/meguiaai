@@ -1,3 +1,0 @@
-0 frente_escada_refeitorio
-1 frente_escada_salas
-2 frente_laboratorios

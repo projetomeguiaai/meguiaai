@@ -1,4 +1,6 @@
 <resources>
-    <string name="app_name">Me Guia.AI</string>
-    <string name="logotipo">Logotipo</string>
+    <string name="app_name">meguiaai</string>
+    <string name="menu_camera_label">Câmera</string>
+    <string name="menu_modelos_label">Modelos</string>
+    <string name="menu_treinamento_label">Treinamento</string>
 </resources>
