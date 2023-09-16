@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.AaptOptions
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,6 +8,10 @@ plugins {
 android {
     namespace = "com.example.meguiaai"
     compileSdk = 33
+
+    aaptOptions {
+        noCompress("tflite")
+    }
 
     defaultConfig {
         applicationId = "com.example.meguiaai"
@@ -36,8 +42,10 @@ android {
 }
 
 dependencies {
-    implementation("com.google.firebase:firebase-ml-vision:24.0.3")
-    implementation("androidx.core:core-ktx:1.8.0")
+    // Tensorflow Deps
+    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-gpu-delegate-plugin:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-gpu:2.13.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

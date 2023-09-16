@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/camera"
+        android:id="@+id/recognition"
         android:enabled="true"
         android:icon="@drawable/outline_camera_alt_24"
         android:title="@string/menu_camera_label"/>
     <item
-        android:id="@+id/models"
+        android:id="@+id/downloads"
         android:enabled="true"
         android:icon="@drawable/outline_cloud_download_24"
-        android:title="@string/menu_modelos_label"/>
+        android:title="@string/menu_downloads_label"/>
     <item
         android:id="@+id/training"
         android:enabled="true"

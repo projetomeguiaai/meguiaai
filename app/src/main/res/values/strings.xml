@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">meguiaai</string>
     <string name="menu_camera_label">Câmera</string>
-    <string name="menu_modelos_label">Modelos</string>
+    <string name="menu_downloads_label">Downloads</string>
     <string name="menu_treinamento_label">Treinamento</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
