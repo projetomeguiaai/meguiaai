@@ -14,10 +14,8 @@ import org.tensorflow.lite.task.vision.classifier.ImageClassifier
 import org.tensorflow.lite.task.vision.classifier.ImageClassifier.ImageClassifierOptions
 import java.lang.IllegalStateException
 
-class ClassificationHelper(context: Context, modelPath: String) {
+class ClassificationHelper(private var context: Context, private var modelPath: String) {
     private var imageClassifier: ImageClassifier? = null
-    private var context: Context = context
-    private var modelPath: String = modelPath
 
     private fun buildImageClassifier() {
         try {
@@ -51,23 +49,18 @@ class ClassificationHelper(context: Context, modelPath: String) {
     }
 
     private fun makeClassifierOptions(): ImageClassifierOptions {
-        val imageClassifierOptions = ImageClassifierOptions.builder()
+        return ImageClassifierOptions.builder()
             .setBaseOptions(getDeviceBaseOptions())
             .setMaxResults(1)
             .setScoreThreshold(.35f)
-
-        return imageClassifierOptions.build()
+            .build()
     }
     private fun getDeviceBaseOptions(): BaseOptions {
-        val baseOptions = BaseOptions.builder()
-
-        if (CompatibilityList().isDelegateSupportedOnThisDevice) {
-            baseOptions.setNumThreads(1).useGpu()
+        return if (CompatibilityList().isDelegateSupportedOnThisDevice) {
+            BaseOptions.builder().setNumThreads(1).useGpu().build()
         } else {
-            baseOptions.setNumThreads(2)
+            BaseOptions.builder().setNumThreads(2).build()
         }
-
-        return baseOptions.build()
     }
 
     companion object {
