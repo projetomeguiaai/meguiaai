@@ -2,7 +2,9 @@ package com.example.meguiaai.helpers
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.util.DisplayMetrics
 import android.util.Size
+import android.view.Display
 import androidx.camera.core.AspectRatio
 import androidx.camera.core.CameraProvider
 import androidx.camera.core.CameraSelector
@@ -16,7 +18,8 @@ import androidx.lifecycle.LifecycleOwner
 
 class CameraHelper(
     private var context: Context,
-    private var previewView: PreviewView
+    private var previewView: PreviewView,
+    private var display: Display?
 ) {
     private var bitmapImage: Bitmap? = null
     private lateinit var cameraProvider: ProcessCameraProvider
@@ -25,8 +28,18 @@ class CameraHelper(
         val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
         cameraProviderFuture.addListener({
             cameraProvider = cameraProviderFuture.get()
-            cameraProvider.bindToLifecycle(getLifecycleOwner(), getCameraSelector(), buildPreview(), buildImageAnalysis())
+            cameraProvider.bindToLifecycle(getLifecycleOwner(), getCameraSelector(), setUpPreview(), setUpImageAnalysis())
         }, ContextCompat.getMainExecutor(context))
+    }
+
+    @Suppress("DEPRECATION")
+    fun getRotation(): Int {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            display?.getRealMetrics(DisplayMetrics())
+        } else {
+            display?.getMetrics(DisplayMetrics())
+        }
+        return display?.rotation ?: 0
     }
 
     private fun getCameraSelector(): CameraSelector {
@@ -43,14 +56,14 @@ class CameraHelper(
         return context as LifecycleOwner
     }
 
-    private fun buildPreview(): Preview {
+    private fun setUpPreview(): Preview {
         val preview = Preview.Builder().build()
         preview.setSurfaceProvider(previewView.surfaceProvider)
 
         return preview
     }
 
-    private fun buildImageAnalysis(): ImageAnalysis {
+    private fun setUpImageAnalysis(): ImageAnalysis {
         val imageAnalysis = ImageAnalysis.Builder()
             .setOutputImageFormat(OUTPUT_IMAGE_FORMAT_RGBA_8888)
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
