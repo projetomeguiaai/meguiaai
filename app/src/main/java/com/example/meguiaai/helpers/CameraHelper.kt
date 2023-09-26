@@ -18,7 +18,7 @@ import androidx.lifecycle.LifecycleOwner
 
 class CameraHelper(
     private var context: Context,
-    private var previewView: PreviewView,
+    private var previewView: PreviewView?,
     private var display: Display?
 ) {
     private var bitmapImage: Bitmap? = null
@@ -58,7 +58,7 @@ class CameraHelper(
 
     private fun setUpPreview(): Preview {
         val preview = Preview.Builder().build()
-        preview.setSurfaceProvider(previewView.surfaceProvider)
+        preview.setSurfaceProvider(previewView?.surfaceProvider)
 
         return preview
     }
