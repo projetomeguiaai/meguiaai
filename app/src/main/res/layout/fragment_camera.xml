@@ -14,7 +14,7 @@
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="@color/bounding_box_color"
+        android:background="@color/primary"
         android:visibility="invisible"
         app:layout_anchorGravity="bottom" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
